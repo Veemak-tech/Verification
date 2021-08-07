@@ -1,0 +1,201 @@
+
+.card{
+  padding: 1.5rem;
+}
+
+.inputbox{
+  padding-top: 5px;
+}
+.invalid{
+  color:#f44336;
+}
+.buttonfont{
+  font-size: x-small;
+}
+
+.subhead2{
+
+  color: #98acf8;
+}
+
+// .row{
+//   text-align: right;
+// }
+
+.text-align{
+  text-align: right;
+}
+
+.padAndMargin{
+  padding: 0rem;
+  margin: 0rem;
+  border-radius: 20px;
+}
+
+.cardsizeAdjust{
+  text-decoration: none;
+  font-size: 20px;
+}
+
+
+.padsize{
+  padding: 0.5rem;
+}
+
+.btn-group-vertical{
+  display: flex;
+  justify-content: space-between;
+
+}
+////////////////////////////////////
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+////////////////////////////////////
+
+.video-js video {
+  background-color: #42f489;
+}
+
+@media only screen and (max-width: 600px) {
+  .text-align{
+    text-align: left;
+  }
+
+
+  .p-adjust-mob{
+    padding-right: 0 !important;
+  }
+
+  .mob-button{
+    width: 60px;
+
+  }
+
+  .button-aud{
+    width: 50px;
+  }
+
+
+  .single-line-button{
+    //display: contents;
+  }
+  .case-textarea{
+    margin-left: 1.9rem !important;
+    margin-right: 3.6rem !important;
+  }
+
+  .btn-mob-adjust{
+    margin-right: 3rem;
+  }
+
+  .tarea-label{
+    margin-left: 1rem;
+  }
+}
+
+// .remove-vol-control{
+
+//     position:relative;
+//     top:10px;
+//     width:260px;
+//     overflow: hidden;
+//     direction: ltl;
+//     border-top-right-radius: 0.5em 0.5em;
+//     border-bottom-right-radius: 1em 0.7em;
+
+// }
+
+audio::-webkit-media-controls-mute-button {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+
+audio::-webkit-media-controls-timeline-container{
+  display: none !important;
+}
+audio::-webkit-media-controls-current-time-display{
+  display: none !important;
+}
+audio::-webkit-media-controls-time-remaining-display{
+  display: none !important;
+}
+
+audio::-webkit-media-controls-volume-slider-container{
+  display: none !important;
+}
+audio::-webkit-media-controls-seek-back-button{
+  display: none !important;
+
+}
+audio::-webkit-media-controls-seek-forward-button{
+  display: none !important;
+
+}
+
+// body {
+//   margin: 0;
+//   /*background: url(http://placekitten.com/999/500) no-repeat;*/
+//   background-size: cover;
+
+// }
+
+// .wrapper img {
+//   position: absolute;
+//   width: 100%;
+//   box-sizing: border-box;
+// }
+
+// .wrapper .slider-wrapper {
+//   position: fixed;
+//   top:0;
+//   left: 0;
+//   box-shadow: 1px 3px 10px rgba(10, 10, 10, 0.5);
+//   border: 0.07rem solid rgb(100,100,100);
+//   background: rgba(30,30,30,0.85);
+//   padding: 7px 15px 8px;
+//   border-radius: 0 0 10px;
+//   color: #ddd;
+// }
+// output {
+//   display: inline-block;
+//   width:25px;}
+
+
+
+
+// .inputborder{
+//   border: none;
+//   outline: none;
+//   border: none;
+//   background-color: transparent;
+//   resize: none;
+// }
+
+// .inputborder:focus{
+//   border: none;
+//   outline: none;
+//   border: none;
+//   background-color: transparent;
+//   resize: none;
+// }
+
+

@@ -1,0 +1,814 @@
+<!-- <head>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+<script src="../../../../../assets/bootstrap-maxlength.min.js"></script>
+  <script src="../../../../../assets/bootstrap-maxlength.js"></script>
+
+</head> -->
+
+<section class=" contact-page section-b-space">
+  <div class="container">
+    <div class="card">
+
+      <div class="row">
+
+
+        <form [formGroup]="RegisterForm" autocomplete="off" (ngSubmit)="onSubmit()">
+          <h3 class="subhead2" style="margin-bottom: 0 !important;">Case Details</h3>
+          <div class="col-md-12 row">
+
+            <div class="col-md-6 form-group row p-adjust-mob yspace" >
+              <div class="col-sm-2"></div>
+              <label for="name" class="col-form-label col-sm-3 text-align">Case ID:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" id="CaseID" name="CaseID" minLength="5" maxlength=20
+                  placeholder="Enter Case ID" autocomplete="off" formControlName="CaseID" required
+                  [ngClass]="{ 'is-invalid': submitted && f.CaseID.errors }">
+                <div *ngIf="submitted && f.CaseID.errors" class="invalid-feedback">
+                  <div *ngIf="f.CaseID.errors.required">Case ID is required</div>
+                  <div *ngIf="f.CaseID.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.CaseID.errors.maxlength">Max 10 Characters </div>
+                  <div *ngIf="f.CaseID.errors.pattern">Should be Numbers</div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <div class="col-sm-2"></div>
+              <label for="name" class="col-form-label col-sm-4 text-align">Ref Number:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" id="ReferenceNumber" minlength="5" name="ReferenceNumber"
+                  maxlength="20" placeholder="Reference Number" formControlName="ReferenceNumber" autocomplete="off"
+                  required [ngClass]="{ 'is-invalid': submitted && f.ReferenceNumber.errors }">
+                <div *ngIf="submitted && f.ReferenceNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.ReferenceNumber.errors.required">ReferenceNumber is required</div>
+                  <div *ngIf="f.ReferenceNumber.errors.minlength"> Min 5 Characters </div>
+                  <div *ngIf="f.ReferenceNumber.errors.maxlength">Max 10 Characters </div>
+                  <div *ngIf="f.ReferenceNumber.errors.pattern">Number only</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-12 row">
+
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <div class="col-sm-2"></div>
+              <label for="name" class="col-form-label col-sm-3 text-align">Due date:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="date" value="12-12-2012" class="form-control" formControlName="DueDate" name="DueDate"
+                  id="name" required [ngClass]="{ 'is-invalid': submitted && f.DueDate.errors }">
+                <div *ngIf="submitted && f.DueDate.errors" class="invalid-feedback">
+                  <div *ngIf="f.DueDate.errors.required">DueDate is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <div class="col-sm-2"></div>
+              <label for="name" class="col-form-label col-sm-4 text-align mr-3">Agent Name:</label>
+              <!-- <div class="col-sm-6 p-adjust-mob">
+                <input type="search" ngModel class="form-control" name="Name" maxlength="45" id="name" placeholder="Agent Name" required="" autocomplete="off">
+              </div> -->
+              <div class="col-md-5 p-adjust-mob mar-left agent-select-size">
+                <select formControlName="name" class="form-select form-control custom-select btn-sm btn-height"
+                  id="assignto" name="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                  <option class="form-control" *ngFor="let item of agents" [value]="item.name">{{item.name}}</option>
+                </select>
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label">Notes:</label>
+          </div> -->
+
+          <div class=" row">
+            <div class="col-sm-1 ml-4"></div>
+            <div class="col-sm-1 ml-3">Notes</div>
+            <div class="col-sm-8 ml-2 pl-0 pr-0 case-textarea">
+              <textarea class="form-control " maxlength="257" name="Description" rows="3"
+                placeholder="Write Your Notes" autocomplete="off" formControlName="Description" required
+                [ngClass]="{ 'is-invalid': submitted && f.Description.errors }"></textarea>
+              <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+                <div *ngIf="f.Description.errors.required">Description is required</div>
+                <div *ngIf="f.Description.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.Description.errors.maxlength">Max 256 Characters</div>
+              </div>
+            </div>
+            <div class="col-sm-2"></div>
+          </div>
+
+          <div class="form-group row mb-0">
+            <div class="col-md-2"></div>
+            <!-- <label for="img" class=" col-sm-3 col-form-label" style="text-align: right;">Image file</label> -->
+            <div class="col-md-8 " style="margin-left: 19px; display: flex;">
+              <!-- <input ngModel type="file" id="img" name="file" accept="image/*" (change)="onSelectFile($event)"> -->
+
+              <!-- <div *ngIf="currentFile" class="progress">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                  attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"
+                  [ngStyle]="{ width: progress + '%' }">
+                  {{ progress }}%
+                </div>
+              </div> -->
+
+
+                <div class="input-group mb-3 col-md-4 col-4 file-margin">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="FileUpload"
+              (change)="selectFile($event)"  formControlName="FileUpload"
+              id="FileUpload" required [ngClass]="{ 'is-invalid': submitted && f.FileUpload.errors }">
+
+                      <label class="custom-file-label" for="FileUpload">Choose...</label>
+                  </div>
+                  <small class="form-text text-muted  ">Choose an image file below 6 MB</small>
+                </div>
+                <div class="mob-helptext col-md-10">
+
+                  <div>
+                    <small class="text-muted form-text">File Name: {{filename}}</small>
+                    <small class="text-muted form-text">File Size (KB): {{filesize}}</small>
+                  </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-3 pt-2"> -->
+              <!-- <button class="btn btn-success" [disabled]="!selectedFiles" >
+                Upload
+              </button> -->
+            <!-- </div> -->
+            <!-- <div class="card">
+                <div class="card-header">List of Files</div>
+                <ul
+                  class="list-group list-group-flush"
+                  *ngFor="let file of fileInfos | async"
+                >
+                  <li class="list-group-item">
+                    <a href="{{ file.url }}">{{ file.name }}</a>
+                  </li>
+                </ul>
+              </div> -->
+
+          </div>
+          <!-- <div class="row">
+            <div class="col-md-2"></div>
+            <div class="alert alert-light ml-4" role="alert">{{ message }}</div>
+          </div> -->
+
+          <hr style="margin: 0;">
+          <h3 class="subhead2" style="margin-bottom: 0 !important;">Insurer Details</h3>
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <div class="col-sm-1"></div>
+              <label for="InsurerName" class="col-form-label col-sm-4 text-align">Name:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" maxlength="45" placeholder="Enter Insurer Name"
+                  name="InsurerName" id="InsurerName" autocomplete="off" formControlName="InsurerName" required
+                  [ngClass]="{ 'is-invalid': submitted && f.InsurerName.errors }">
+                <div *ngIf="submitted && f.InsurerName.errors" class="invalid-feedback">
+                  <div *ngIf="f.InsurerName.errors.required">Insurer Name is required</div>
+                  <div *ngIf="f.InsurerName.errors.minlength"> Min 2 Characters </div>
+                  <div *ngIf="f.InsurerName.errors.maxlength">Max 20 Characters </div>
+                  <div *ngIf="f.InsurerName.errors.pattern">Should only contain words</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 p-adjust-mob form-group row yspace">
+              <div class="col-sm-2"></div>
+              <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" minlength="10" maxlength="21" placeholder="Phone Number"
+                  name="PhoneNumber" id="PhoneNumber" autocomplete="off" formControlName="PhoneNumber" required
+                  [ngClass]="{ 'is-invalid': submitted && f.PhoneNumber.errors }">
+                <div *ngIf="submitted && f.PhoneNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.PhoneNumber.errors.required">Phone Number is required</div>
+                  <div *ngIf="f.PhoneNumber.errors.minlength"> Min 10 Numbers</div>
+                  <div *ngIf="f.PhoneNumber.errors.maxlength">Max 20 Numbers </div>
+                  <div *ngIf="f.PhoneNumber.errors.pattern">Invalid Phone Number</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob yspace" >
+              <div class="col-sm-1"></div>
+              <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" maxlength="60" placeholder="Email ID" name="EmailID"
+                  id="EmailID" autocomplete="off" formControlName="EmailID" required
+                  [ngClass]="{ 'is-invalid': submitted && f.EmailID.errors }">
+                <div *ngIf="submitted && f.EmailID.errors" class="invalid-feedback">
+                  <div *ngIf="f.EmailID.errors.required">Email is required</div>
+                  <div *ngIf="f.EmailID.errors.email">Email must be a valid</div>
+                  <div *ngIf="f.EmailID.errors.maxlength">Max 50 Characters </div>
+                  <div *ngIf="f.EmailID.errors.pattern">Invalid Email</div>
+                </div>
+              </div>
+            </div>
+            <!-- Additional info -->
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <div class="col-sm-2"></div>
+              <label for="IAddInfo" class="col-form-label col-sm-4 text-align">Additional Info:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" maxlength="258" placeholder="Additional Info"
+                name="IAddInfo" id="IAddInfo" autocomplete="off" formControlName="IAddInfo" required
+                  [ngClass]="{ 'is-invalid': submitted && f.IAddInfo.errors }">
+                <div *ngIf="submitted && f.IAddInfo.errors" class="invalid-feedback">
+                  <div *ngIf="f.IAddInfo.errors.required">Required</div>
+                  <div *ngIf="f.IAddInfo.errors.minlength">Min 2 Character </div>
+                  <div *ngIf="f.IAddInfo.errors.maxlength">Max 256 Characters </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label pt-0 pb-0">Address:</label>
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-1 ml-1"></div>
+            <!-- <div style="width: 110px;"> -->
+            <div class="col-sm-1 ml-4"></div>
+            <!-- </div> -->
+            <div class="col-sm-4 form-group yspace">
+              <input type="search" class="form-control" maxlength="256" placeholder="AddressLine 1" name="AddressLine1"
+                id="AddressLine1" placeholder="AddressLine 1" autocomplete="off" formControlName="AddressLine1" required
+                [ngClass]="{ 'is-invalid': submitted && f.AddressLine1.errors }">
+              <div *ngIf="submitted && f.AddressLine1.errors" class="invalid-feedback">
+                <div *ngIf="f.AddressLine1.errors.required">Address Line 1 is required</div>
+                <div *ngIf="f.AddressLine1.errors.minlength"> Min 5 Characters</div>
+                <div *ngIf="f.AddressLine1.errors.maxlength">Max 50 Characters</div>
+              </div>
+            </div>
+            <div class="col-sm-5 form-group yspace">
+              <input type="search" class="form-control" maxlength="256" placeholder="AddressLine 2" name="AddressLine2"
+                id="AddressLine2" placeholder="AddressLine 2" autocomplete="off" formControlName="AddressLine2" required
+                [ngClass]="{ 'is-invalid': submitted && f.AddressLine2.errors }">
+              <div *ngIf="submitted && f.AddressLine2.errors" class="invalid-feedback">
+                <div *ngIf="f.AddressLine2.errors.required">Address Line 2 is required</div>
+                <div *ngIf="f.AddressLine2.errors.minlength"> Min 5 Characters</div>
+                <div *ngIf="f.AddressLine2.errors.maxlength">Max 50 Characters</div>
+              </div>
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 110px;"></div> -->
+
+            <div class="col-sm-2 ml-1 form-group">
+              <input type="search" class="form-control" maxlength="25" name="City" id="City" placeholder="City"
+                autocomplete="off" formControlName="City" required
+                [ngClass]="{ 'is-invalid': submitted && f.City.errors }">
+              <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
+                <div *ngIf="f.City.errors.required">City is required</div>
+                <div *ngIf="f.City.errors.minlength"> Min 3 Characters </div>
+                <div *ngIf="f.City.errors.maxlength">Max 20 Characters </div>
+                <div *ngIf="f.City.errors.pattern">Should only contain words</div>
+              </div>
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="search" class="form-control" maxlength="25" name="State" id="State" placeholder="State"
+                autocomplete="off" formControlName="State" required
+                [ngClass]="{ 'is-invalid': submitted && f.State.errors }">
+              <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                <div *ngIf="f.State.errors.required">State is required</div>
+                <div *ngIf="f.State.errors.minlength"> Min 3 Characters </div>
+                <div *ngIf="f.State.errors.maxlength">Max 20 Characters </div>
+                <div *ngIf="f.State.errors.pattern">Should only contain words</div>
+              </div>
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="search" class="form-control" maxlength="10" name="Pincode" id="Pincode" placeholder="Pincode"
+                autocomplete="off" formControlName="Pincode" required
+                [ngClass]="{ 'is-invalid': submitted && f.Pincode.errors }">
+              <div *ngIf="submitted && f.Pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.Pincode.errors.required">Pincode is required</div>
+                <div *ngIf="f.Pincode.errors.minlength"> Min 6 Numbers</div>
+                <div *ngIf="f.Pincode.errors.maxlength">Max 6 Numbers</div>
+                <div *ngIf="f.Pincode.errors.pattern">Should be Numbers</div>
+              </div>
+            </div>
+            <div class="col-sm-3 form-group">
+              <input type="search" class="form-control" maxlength="256" name="Landmark" id="Landmark"
+                placeholder="Landmark" autocomplete="off" formControlName="Landmark" required
+                [ngClass]="{ 'is-invalid': (f.Landmark.touched || submitted)  && f.Landmark.errors }">
+              <div *ngIf="(f.Landmark.touched || submitted) && f.Landmark.errors" class="invalid-feedback">
+                <div *ngIf="f.Landmark.errors.required">Landmark is required</div>
+                <div *ngIf="f.Landmark.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.Landmark.errors.maxlength">Max 50 Characters </div>
+              </div>
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
+
+          </div>
+
+          <!-- <div class="row">
+                          <div class="col-xl-1 ml-4"></div>
+                        <div class="col-xl-1 text-align ml-2">
+                          <div class="col-xl-2" style="margin-left: 31px;"></div>
+                          <label for="notes" class="col-form-label ">Notes:</label>
+                        </div>
+                           <div class="col-sm-2 ml-5"></div>
+                           <div style="width: 135px;"></div>
+                          <div class="col-sm-8">
+                            <textarea class="form-control" rows="6" placeholder="Write Your Message 1"></textarea>
+                          </div>
+
+                           <div class="col-sm-1"></div>
+                      </div> -->
+
+          <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label"  style="padding-top: 0 !important;">Questions:</label>
+          </div>
+
+          <div class="row mobile-adjust-questionbox">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 135px;"></div> -->
+
+            <!-- ins question -->
+            <div class="col-sm-8 ml-4 pb-2 borderstyle border border-info">
+              <div class="col-md-12 pl-0" *ngFor="let control of ins_questionsarray">
+                <div [ngSwitch]="control.controltype">
+                  <!-- text -->
+                  <div  *ngSwitchCase="'text'">
+                    <div class="col-md-12">
+                      <label class="{{control.labelcss}}">{{control.questiondisplaytext}}</label>
+                    </div>
+                    <div class="col-md-12">
+                      <input type="{{control.controltype}}" class="{{control.controlcss}}" maxlength="45"
+                        aria-describedby="passwordHelpBlock" placeholder="{{control.questionname}}"
+                        value="" formControlName={{control.questionname}} id="{{control.questionid}}"
+                        [ngClass]="{ 'is-invalid': submitted && RegisterForm.get(control.questionname).errors }">
+                        <div *ngIf="RegisterForm.get(control.questionname).dirty || RegisterForm.get(control.questionname).touched"
+                        class="invalid-feedback" >
+                          <small *ngIf="!RegisterForm.get(control.questionname).valid">
+                            {{control.questionname}} is Required
+                          </small>
+                        </div>
+
+
+                      <small id="passwordHelpBlock" class="form-text text-muted">
+                        {{control.helptext}}
+                      </small>
+                    </div>
+                  </div>
+                  <!-- radio -->
+                  <div *ngSwitchCase="'radio'">
+                    <div class="col-md-12 mb-3">
+
+                      <label for="gender">{{control.questiondisplaytext}}</label>
+
+                      <div class="col-md-12 row">
+                        <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')">
+                          <label class="form-check-label" for="{{val}}">
+                            <input type="radio" class="form-check-input" formControlName={{control.questionname}}
+                             name="{{control.questionname}}" id="{{control.questionid}}" value="{{val}}"
+                             [ngClass]="{ 'is-invalid': submitted && RegisterForm.get(control.questionname).errors }">
+                              {{val}}
+                              <!-- <div *ngIf="RegisterForm.get(control.questionname).dirty || RegisterForm.get(control.questionname).touched"
+                              class="invalid-feedback" >
+                                <small *ngIf="!RegisterForm.get(control.questionname).valid">
+                                  {{val}} is Required
+                                </small>
+                              </div> -->
+                          </label>
+
+
+                        </div>
+                      </div>
+                      <div *ngIf="submitted && RegisterForm.get(control.questionname).errors?.required"
+                          class="text-danger" >
+                             <small>{{control.questiondisplaytext}} Required</small>
+                          </div>
+
+                      <!-- <div class="col-md-12 row">
+                        <div class="form-check form-check-inline mr-3"
+                         *ngFor="let val of questionoptionsarray  ">
+                          <label class="form-check-label" for="{{val}}">
+                            <input class="form-check-input" type="radio" name="radio" id="{{val}}"
+                              value="{{val}}">{{val}}
+                          </label>
+                        </div>
+                      </div> -->
+
+
+
+                    </div>
+                  </div>
+                  <!-- select -->
+                  <div *ngSwitchCase="'Select'">
+                    <div class="col-md-12">
+
+                      <label for="city">{{control.questiondisplaytext}}</label>
+
+                      <div class="col-md-12 row pl-0">
+                        <div class="form-check mr-3">
+                          <select class="custom-select" name="city" id="city" formControlName="{{control.questionname}}"
+                          [ngClass]="{ 'is-invalid': submitted && RegisterForm.get(control.questionname).errors }">
+                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
+                           >{{val}}</option>
+
+                          </select>
+                          <!-- <div *ngIf="RegisterForm.get(control.questionname).dirty || RegisterForm.get(control.questionname).touched"
+                          class="invalid-feedback" >
+                            <small *ngIf="!RegisterForm.get(control.questionname).valid">
+                              {{control.questionname}} is Required
+                            </small>
+                          </div> -->
+                          <div *ngIf="submitted && RegisterForm.get(control.questionname).errors?.required"
+                          class="text-danger" >
+                             <small>{{control.questiondisplaytext}} Required</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- checkbox -->
+                      <div *ngSwitchCase="'checkbox'">
+                        <div class="col-md-12 mb-3 mt-2">
+                          <!-- <label for="gender">{{control.questionname}}</label><br> -->
+                          <div class="form-check form-check-inline">
+                            <label class="form-check-label " for="{{control.questionname}}">
+                              <input class="form-check-input" type="checkbox" value="{{control.questiondisplaytext}}"
+                              [ngClass]="{ 'is-invalid': submitted && RegisterForm.get(control.questionname).errors }">
+                              {{control.questionname}}
+
+                            </label>
+                            <div *ngIf="RegisterForm.get(control.questionname).dirty || RegisterForm.get(control.questionname).touched"
+                          class="invalid-feedback" >
+                            <small *ngIf="!RegisterForm.get(control.questionname).valid">
+                              {{control.questionname}} is Required
+                            </small>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-sm-1"></div>
+          </div>
+
+          <div class="row mt-3" style="margin-top: 6px !important;">
+            <div class="col-sm-2 ml-4"></div>
+            <div class="col-sm-8 case-i-textarea txt-area pr-0">
+              <textarea class="form-control " maxlength="256" name="InsurerVerificationNotes" rows="6"
+                placeholder="Insurer Questions" autocomplete="off" formControlName="InsurerVerificationNotes" required
+                [ngClass]="{ 'is-invalid': submitted && f.InsurerVerificationNotes.errors }"></textarea>
+              <div *ngIf="submitted && f.InsurerVerificationNotes.errors" class="invalid-feedback">
+                <div *ngIf="f.InsurerVerificationNotes.errors.required">Insurer Verification Notes is required</div>
+                <div *ngIf="f.InsurerVerificationNotes.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.InsurerVerificationNotes.errors.maxlength">Max 250 Characters </div>
+              </div>
+            </div>
+          </div>
+
+          <hr style="margin: 0.5rem;">
+          <!-- -------------------------------------------------------thirdparty---------------------------------------- -->
+
+          <h3 class="subhead2" style="margin-bottom: 0 !important;">Thirdparty Details</h3>
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <!-- <div class="col-sm-1"></div> -->
+              <label for="InsurerName" class="col-form-label col-sm-5 text-align">Name:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" maxlength="45" placeholder="Thirdparty Name"
+                  name="ThirdpartyName" id="ThirdpartyName" autocomplete="off" formControlName="ThirdpartyName" required
+                  [ngClass]="{ 'is-invalid': submitted && f.ThirdpartyName.errors }">
+                <div *ngIf="submitted && f.ThirdpartyName.errors" class="invalid-feedback">
+                  <div *ngIf="f.ThirdpartyName.errors.required">Thirdparty Name is required</div>
+                  <div *ngIf="f.ThirdpartyName.errors.minlength"> Min 2 Characters </div>
+                  <div *ngIf="f.ThirdpartyName.errors.maxlength">Max 30 Characters </div>
+                  <div *ngIf="f.ThirdpartyName.errors.pattern">Should only contain words</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <div class="col-sm-2"></div>
+              <label for="PhoneNumber" class="col-form-label col-sm-4 text-align">Phone Number:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" maxlength="21" placeholder="Phone Number" name="T_PhoneNumber"
+                  id="T_PhoneNumber" autocomplete="off" formControlName="T_PhoneNumber" required
+                  [ngClass]="{ 'is-invalid': submitted && f.T_PhoneNumber.errors }">
+                <div *ngIf="submitted && f.T_PhoneNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.T_PhoneNumber.errors.required">Third party PhoneNumber is required</div>
+                  <div *ngIf="f.T_PhoneNumber.errors.minlength"> Min 10 Characters </div>
+                  <div *ngIf="f.T_PhoneNumber.errors.maxlength">Max 20 Characters </div>
+                  <div *ngIf="f.T_PhoneNumber.errors.pattern">Invalid Mobile Number</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-12 row">
+            <div class="col-md-6 form-group row p-adjust-mob yspace" >
+              <div class="col-sm-1"></div>
+              <label for="InsurerName" class="col-form-label col-sm-4 text-align">Email:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" maxlength="55" name="T_EmailID" id="T_EmailID"
+                  autocomplete="off" placeholder="Enter EmailID" formControlName="T_EmailID" required
+                  [ngClass]="{ 'is-invalid': submitted && f.T_EmailID.errors }">
+                <div *ngIf="submitted && f.T_EmailID.errors" class="invalid-feedback">
+                  <div *ngIf="f.T_EmailID.errors.required">Third Party Email ID is required</div>
+                  <div *ngIf="f.T_EmailID.errors.email">Email must be a valid</div>
+                  <div *ngIf="f.T_EmailID.errors.maxlength">Max 50 Characters </div>
+                  <div *ngIf="f.T_EmailID.errors.pattern">Invalid Email</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional info -->
+            <div class="col-md-6 form-group row p-adjust-mob yspace">
+              <div class="col-sm-2"></div>
+              <label for="TAddInfo" class="col-form-label col-sm-4 text-align">Additional Info:</label>
+              <div class="col-sm-6 p-adjust-mob">
+                <input type="search" class="form-control" maxlength="258" placeholder="Additional Info"
+                name="TAddInfo" id="TAddInfo" autocomplete="off" formControlName="TAddInfo" required
+                  [ngClass]="{ 'is-invalid': submitted && f.TAddInfo.errors }">
+                <div *ngIf="submitted && f.TAddInfo.errors" class="invalid-feedback">
+                  <div *ngIf="f.TAddInfo.errors.required">Required</div>
+                  <div *ngIf="f.TAddInfo.errors.minlength">Min 2 Character </div>
+                  <div *ngIf="f.TAddInfo.errors.maxlength">Max 256 Characters </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-9 tarea-label pb-0 pt-0">Address:</label>
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-1 ml-1"></div>
+            <div class="col-sm-1 ml-4"></div>
+            <!-- <div style="width: 110px;">
+                          </div> -->
+            <div class="col-sm-4 form-group yspace">
+              <input type="search" class="form-control" maxlength="256" name="T_AddressLine1" id="T_AddressLine1"
+                placeholder="AddressLine 1" autocomplete="off" formControlName="T_AddressLine1" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_AddressLine1.errors }">
+              <div *ngIf="submitted && f.T_AddressLine1.errors" class="invalid-feedback">
+                <div *ngIf="f.T_AddressLine1.errors.required">Address Line 1 is required</div>
+                <div *ngIf="f.T_AddressLine1.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.T_AddressLine1.errors.maxlength">Max 50 Characters </div>
+              </div>
+            </div>
+            <div class="col-sm-5 form-group yspace">
+              <input type="search" class="form-control" maxlength="256" name="T_AddressLine2" id="T_AddressLine2"
+                placeholder="AddressLine 2" autocomplete="off" formControlName="T_AddressLine2" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_AddressLine2.errors }">
+              <div *ngIf="submitted && f.T_AddressLine2.errors" class="invalid-feedback">
+                <div *ngIf="f.T_AddressLine2.errors.required">Address Line 2 is required</div>
+                <div *ngIf="f.T_AddressLine2.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.T_AddressLine2.errors.maxlength">Max 50 Characters </div>
+              </div>
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
+          </div>
+
+          <div class="col-md-12 row">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 110px;"></div> -->
+
+            <div class="col-sm-2 ml-1 form-group">
+              <input type="search" class="form-control" maxlength="25" name="T_City" id="T_City" placeholder="City"
+                autocomplete="off" formControlName="T_City" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_City.errors }">
+              <div *ngIf="submitted && f.T_City.errors" class="invalid-feedback">
+                <div *ngIf="f.T_City.errors.required">City is required</div>
+                <div *ngIf="f.T_City.errors.minlength"> Min 3 Characters </div>
+                <div *ngIf="f.T_City.errors.maxlength">Max 20 Characters </div>
+                <div *ngIf="f.T_City.errors.pattern">Should only contain words</div>
+              </div>
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="search" class="form-control" maxlength="30" name="T_State" id="T_State" placeholder="State"
+                autocomplete="off" formControlName="T_State" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_State.errors }">
+              <div *ngIf="submitted && f.T_State.errors" class="invalid-feedback">
+                <div *ngIf="f.T_State.errors.required">State is required</div>
+                <div *ngIf="f.T_State.errors.minlength"> Min 3 Characters </div>
+                <div *ngIf="f.T_State.errors.maxlength">Max 25 Characters </div>
+                <div *ngIf="f.T_State.errors.pattern">Should only contain words</div>
+              </div>
+            </div>
+            <div class="col-sm-2 form-group">
+              <input type="search" class="form-control" maxlength="10" name="T_Pincode" id="T_Pincode"
+                placeholder="Pincode" autocomplete="off" formControlName="T_Pincode" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_Pincode.errors }">
+              <div *ngIf="submitted && f.T_Pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.T_Pincode.errors.required">Pincode is required</div>
+                <div *ngIf="f.T_Pincode.errors.minlength"> Min 6 Characters </div>
+                <div *ngIf="f.T_Pincode.errors.maxlength">Max 6 Characters </div>
+                <div *ngIf="f.T_Pincode.errors.pattern">Should be numbers</div>
+              </div>
+            </div>
+            <div class="col-sm-3 form-group">
+              <input type="search" class="form-control" maxlength="256" name="T_Landmark" id="T_Landmark"
+                placeholder="Landmark" autocomplete="off" formControlName="T_Landmark" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_Landmark.errors }">
+              <div *ngIf="submitted && f.T_Landmark.errors" class="invalid-feedback">
+                <div *ngIf="f.T_Landmark.errors.required">Landmark is required</div>
+                <div *ngIf="f.T_Landmark.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.T_Landmark.errors.maxlength">Max 50 Characters </div>
+              </div>
+            </div>
+            <!-- <div class="col-sm-2"></div> -->
+
+          </div>
+
+          <div class="row mt-0">
+            <div class="col-sm-2" style="margin-left: 31px;"></div>
+            <label for="notes" class="col-form-label col-sm-2 tarea-label" style="padding-top: 0 !important;">
+              Questions:</label>
+            <!-- <div class=" col-sm-1 btn-group">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               Q-Template
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+              </div>
+            </div> -->
+          </div>
+
+          <div class="row mobile-adjust-questionbox">
+            <div class="col-sm-2 ml-4"></div>
+            <!-- <div style="width: 135px;"></div> -->
+
+            <!-- tpart question -->
+            <div class="col-sm-8 ml-4 pb-2 borderstyle border border-info">
+              <div class="col-md-12 pl-0" *ngFor="let control of t_questionsarray">
+                <div [ngSwitch]="control.controltype">
+                  <div *ngSwitchCase="'text'">
+                    <div class="col-md-12">
+                      <label class="{{control.labelcss}}">{{control.questiondisplaytext}}</label>
+                    </div>
+                    <div class="col-md-12">
+                      <input type="{{control.controltype}}" class="{{control.controlcss}}" maxlength="45"
+                        aria-describedby="passwordHelpBlock" placeholder="{{control.questionname}}"
+                        value="" formControlName={{control.questionname}} id="{{control.questionid}}"
+                        [ngClass]="{ 'is-invalid': submitted && RegisterForm.get(control.questionname).errors }">
+                        <div *ngIf="RegisterForm.get(control.questionname).dirty || RegisterForm.get(control.questionname).touched"
+                          class="invalid-feedback" >
+                            <small *ngIf="!RegisterForm.get(control.questionname).valid">
+                              {{control.questionname}} is Required
+                            </small>
+                          </div>
+
+                      <small id="passwordHelpBlock" class="form-text text-muted">
+                        {{control.helptext}}
+                      </small>
+                    </div>
+                  </div>
+                  <!-- radio -->
+                  <div *ngSwitchCase="'radio'">
+                    <div class="col-md-12">
+
+                      <label for="gender" class="mb-0">{{control.questiondisplaytext}}</label>
+
+                      <div class="col-md-12 row">
+                        <div class="form-check mr-3" *ngFor="let val of control.questionname.split(',')">
+                          <label class="form-check-label" for="{{val}}"
+                          [ngClass]="{ 'is-invalid': submitted && RegisterForm.get(control.questionname).errors }">
+                            <input type="radio" class="form-check-input" formControlName={{control.questionname}}
+                             name="{{control.questionname}}" id="{{control.questionid}}"  value="{{val}}" >
+                              {{val}}
+                          </label>
+
+                        </div>
+                      </div>
+                      <div *ngIf="submitted && RegisterForm.get(control.questionname).errors?.required"
+                          class="text-danger" >
+                          <small>{{control.questiondisplaytext}} Required</small>
+                          </div>
+
+                      <!-- <div class="col-md-12 row">
+                        <div class="form-check form-check-inline mr-3"
+                         *ngFor="let val of questionoptionsarray  ">
+                          <label class="form-check-label" for="{{val}}">
+                            <input class="form-check-input" type="radio" name="radio" id="{{val}}"
+                              value="{{val}}">{{val}}
+                          </label>
+                        </div>
+                      </div> -->
+
+
+
+                    </div>
+                  </div>
+                  <!-- select -->
+                  <div *ngSwitchCase="'Select'">
+                    <div class="col-md-12">
+
+                      <label for="city" class="mb-0">{{control.questiondisplaytext}}</label>
+
+                      <div class="col-md-12 row pl-0">
+                        <div class="form-check mr-3">
+                          <select class="custom-select" name="city" id="city" formControlName="{{control.questionname}}"
+                          [ngClass]="{ 'is-invalid': submitted && RegisterForm.get(control.questionname).errors }">
+                            <option *ngFor="let val of control.questionname.split(',')" value="{{val}}"
+                           >{{val}}</option>
+
+                          </select>
+                          <!-- <div *ngIf="RegisterForm.get(control.questionname).dirty || RegisterForm.get(control.questionname).touched"
+                          class="invalid-feedback" >
+                            <small *ngIf="!RegisterForm.get(control.questionname).valid">
+                              {{control.questionname}} is Required
+                            </small>
+                          </div> -->
+
+                          <div *ngIf="submitted && RegisterForm.get(control.questionname).errors?.required"
+                          class="text-danger" >
+                             <small>{{control.questiondisplaytext}} Required</small>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- checkbox -->
+                      <div *ngSwitchCase="'checkbox'">
+                        <div class="col-md-12 mb-3 mt-2">
+                          <!-- <label for="gender">{{control.questionname}}</label><br> -->
+                          <div class="form-check form-check-inline">
+                            <label class="form-check-label " for="{{control.questionname}}">
+                              <input class="form-check-input" type="checkbox" value="{{control.questiondisplaytext}}">
+                              {{control.questionname}}
+
+                            </label>
+                            <div *ngIf="RegisterForm.get(control.questionname).dirty || RegisterForm.get(control.questionname).touched">
+                              <small *ngIf="!RegisterForm.get(control.questionname).valid">
+                                {{control.label}} is Required
+                              </small>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-sm-1"></div>
+          </div>
+
+          <div class="row mt-3" style="margin-top: 6px !important;">
+            <div class="col-sm-2 ml-4"></div>
+            <div class="col-sm-8 case-i-textarea txt-area pr-0">
+              <textarea class="form-control " maxlength="256" name="T_VerificationNotes" rows="6"
+                placeholder="Thirdparty Questions" autocomplete="off" formControlName="T_VerificationNotes" required
+                [ngClass]="{ 'is-invalid': submitted && f.T_VerificationNotes.errors }"></textarea>
+              <div *ngIf="submitted && f.T_VerificationNotes.errors" class="invalid-feedback">
+                <div *ngIf="f.T_VerificationNotes.errors.required">Third Party VerificationNotes is required</div>
+                <div *ngIf="f.T_VerificationNotes.errors.minlength"> Min 5 Characters </div>
+                <div *ngIf="f.T_VerificationNotes.errors.maxlength">Max 250 Characters </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <br> -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary ml-5 btn-mob-adjust">
+              <i class="fas fa-user-check mr-2"></i>Submit</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

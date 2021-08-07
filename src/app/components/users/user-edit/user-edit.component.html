@@ -1,0 +1,137 @@
+<form [formGroup]="EditForm" (ngSubmit)="update()" novalidate action="userEdit">
+  <div class="form-group row">
+    <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+      Name</label>
+    <input class="form-control col-xl-5 col-md-5" id="validationCustom2" type="text" formControlName="name"
+    onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)"
+ 
+      [ngClass]="{'is-invalid':EditForm.get('name').touched && EditForm.get('name').invalid}">
+    <div class="invalid-feedback" style="margin-left: 50%">
+      Enter a Name
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+      email </label>
+    <input class="form-control col-xl-5 col-md-5" id="validationCustom2" type="text" formControlName="email"
+      [ngClass]="{'is-invalid':EditForm.get('email').touched && EditForm.get('email').invalid}">
+    <div *ngIf="EditForm.get('email').touched && EditForm.get('email').invalid" class="invalid-feedback"
+      style="margin-left: 50%">
+      <div *ngIf=" EditForm.get('email').errors.required">email is required</div>
+      <div *ngIf=" EditForm.get('email').errors.email">enter valid email</div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="validationCustom3" class="col-xl-3 col-md-4"><span>*</span>
+      Role</label>
+    <select class="form-control col-xl-5 col-md-5" id="validationCustom3" formControlName="RoleID"
+      [ngClass]="{'is-invalid':EditForm.get('RoleID').touched && EditForm.get('RoleID').invalid}">
+      <p *ngIf="EditForm.get('RoleID').errors.required">RoleID is required</p>
+      <option value="1">Admin</option>
+      <option value="2">Agent</option>
+      <option value="3">Reviewer</option>
+
+    </select>
+  </div>
+
+
+
+  <!-- <div class="accordion" id="accordionExample">
+  <div class="card padAndMargin">
+    <div class="card-header padsize hvr-grow-shadow" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-center cardsizeAdjust " type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          Thirdparty Details
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseThree" class="collapse col-md-8" aria-labelledby="headingthree" data-parent="#accordionExample">
+      <div class="card-body padsizebody">
+
+        <h6>hi</h6>
+        </div>
+        </div>
+        </div>
+</div> -->
+
+
+
+
+  <!-- <div class="form-group row">
+    <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+        RoleID</label>
+    <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
+        type="text" formControlName="RoleID"   required="">
+  </div>
+  <div class="form-group row">
+    <label for="validationCustom2" class="col-xl-3 col-md-4"><span>*</span>
+        Date</label>
+    <input class="form-control col-xl-8 col-md-7" id="validationCustom2"
+        type="text" formControlName="date" readonly required="">
+  </div>
+ -->
+
+  <div class="form-group row" style="margin-left: 40%;">
+    <input type="button" type="submit" class="btn btn-primary" value="update">
+  </div>
+
+</form>
+
+
+
+<form [formGroup]="passwordupdate" (ngSubmit)="updatepassword()" novalidate action="userEdit">
+  <div class="container-fluid">
+
+
+    <div class="form-group row">
+      <label for="validationCustom3" class=" col-md-3"><span>*</span>
+        Reset password</label>
+      <div id="accordion" class=" col-md-5 pl-0 pr-1">
+        <div class="card">
+          <div class="card-header padsize hvr-grow-shadow" id="headingOne">
+            <h5 class="mb-0">
+              <label class="btn btn-link cardsizeAdjust" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                reset password
+              </label>
+            </h5>
+          </div>
+
+
+          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+
+            <div class="form-group row mt-3">
+              <label for="validationCustom2" class="col-xl-3 col-md-4 pass-label-mar ml-3"><span>*</span>
+                Password</label>
+              <input class="form-control col-xl-8 col-md-7" id="validationCustom3" type="text" formControlName="password"
+                required="" value=".">
+
+            </div>
+
+
+            <div class="form-group row" style="margin-left: 50%;">
+              <input class="btn btn-outline-primary" type="submit"  value="Update">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="form-group row" style="margin-left: 50%;">
+      <input type="button" type="submit" class="btn btn-primary" value="update">
+
+    </div> -->
+
+
+
+
+    </div>
+</form>
+
+
