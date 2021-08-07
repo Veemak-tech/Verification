@@ -1,0 +1,114 @@
+body{
+  margin: 0;
+}
+.card{
+  padding: 1.5rem;
+}
+
+.inputbox{
+  padding-top: 5px;
+}
+
+.btn-sm {
+  min-width: 1.8em;
+  padding: .25em !important;
+  margin-left: .1em;
+  margin-right: .1em;
+  color: #495057 !important;
+  font-size: 1rem;
+}
+
+.subhead2{
+
+  color: #98acf8;
+}
+
+.borderstyle{
+  border-style: outset;
+  box-shadow: 0 8px 6px -6px black;
+  border-radius: 15px;
+}
+
+.input-nostyle{
+  //background-color: white;
+  border-color: white;
+}
+
+// .row{
+//   text-align: right;
+// }
+
+.text-align{
+  text-align: right;
+}
+
+.txt-area{
+  padding-left: 25px;
+}
+
+.agent-select-size{
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.nospace{
+  padding: 0;
+}
+.mob-helptext{
+  margin-left: 1rem;
+}
+
+.yspace{
+  margin-bottom: 5px !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .text-align{
+    text-align: left;
+  }
+
+  .mob-helptext{
+    margin-left: 0;
+  }
+
+  .p-adjust-mob{
+    padding-right: 0 !important;
+    //background-color: blue;
+  }
+
+  .mar-left{
+    margin-left: 0.9rem;
+  }
+
+  .file-margin{
+    padding-left: 0;
+  }
+
+  .case-textarea{
+    margin-left: 1.9rem !important;
+    margin-right: 3.6rem !important;
+  }
+
+
+  .case-i-textarea{
+    padding-left: 2rem;
+    width: 405px;
+  }
+
+
+  .btn-mob-adjust{
+    margin-right: 3rem;
+  }
+
+  .tarea-label{
+    margin-left: 1rem;
+  }
+
+  .mobile-adjust-questionbox{
+    margin-right: 10px;
+  }
+}
+
+
+

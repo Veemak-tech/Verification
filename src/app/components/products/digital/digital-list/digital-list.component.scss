@@ -1,0 +1,36 @@
+.title{
+  color: cornflowerblue;
+  text-align: center;
+}
+
+:host ::ng-deep .ng2-smart-actions {
+  width: 5%;
+}
+
+:host ::ng-deep input[type=checkbox]{
+  height: 20px;
+  width: 20px;
+}
+
+:host ::ng-deep .ng2-smart-th {
+  text-align: center;
+}
+
+.vendor-table{
+  padding: 2px;
+}
+
+.reload-position-adjust{
+  margin-left: 95%;
+}
+
+@media screen and (max-width: 600px){
+  .reload-position-adjust{
+    margin-left: 88%;
+  }
+}
+
+
+
+
+

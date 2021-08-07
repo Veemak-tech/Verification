@@ -1,0 +1,142 @@
+<div class="">
+  <h1>Resgistration Form</h1>
+</div>
+
+<section>
+  <form id="form">
+    <div class="row form">
+
+      <h4>1</h4>
+      <div class="col-md-12" *ngFor="let control of dynamicformarray">
+        <div [ngSwitch]="control.controltype" >
+          <div *ngSwitchCase = "'text'">
+            <div class="col-md-4">
+              <label class="{{control.labelcss}}">{{control.questionname}}</label>
+            </div>
+            <div class="col-md-6">
+            <input type="{{control.controltype}}" class="{{control.controlcss}}" aria-describedby="passwordHelpBlock" readonly value="{{control.questiondisplaytext}}">
+              <small id="passwordHelpBlock" class="form-text text-muted">
+                {{control.helptext}}
+              </small>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+<br>
+
+      <!-- ------------------------------------------2 ------------------------------------->
+
+      <h4>2</h4>
+      <div  class="col-md-12" *ngFor="let control of dynamicformarray2">
+        <div [ngSwitch]="control.controltype" >
+          <div *ngSwitchCase = "'text'">
+            <div class="col-md-4">
+              <label class="{{control.labelcss}}">{{control.questionname}}</label>
+            </div>
+            <div class="col-md-6">
+            <input type="{{control.controltype}}" class="{{control.controlcss}}" aria-describedby="passwordHelpBlock" readonly value="{{control.questiondisplaytext}}">
+              <small id="passwordHelpBlock" class="form-text text-muted">
+                {{control.helptext}}
+              </small>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+      <!-- ------------------------------------------3-------------------------------------->
+
+      <h4>3</h4>
+
+        <div class="form-check"  *ngFor="let control of dynamicformarray3">
+          <div [ngSwitch]="control.controltype">
+            <div *ngSwitchCase="'radio'">
+              <div>
+          <label class="form-check-label" for="flexRadioDefault1">
+            {{control.questiondisplaytext}}
+          </label>
+        </div>
+      </div>
+    </div>
+
+        <div class="row">
+          <label class="form-check-label"  *ngFor="let val of control.questionname.split(',')"
+          for="flexRadioDefault1">
+          <input class="form-check-input"  value="{{val}}" *ngFor="let val of control.questionname.split(',')"
+           type="radio" name="flexRadioDefault" id="flexRadioDefault1"><br>
+           {{val}}</label>
+          </div>
+
+
+        </div>
+
+
+        <br><br><br>
+
+
+
+
+
+
+
+      </div>
+
+    <!-- </div> -->
+  </form>
+</section>
+
+
+<button type="submit" class="btn btn-outline-primary" >
+  <i class="fas fa-user-check mr-2" (click)="showSuccess()"></i>Submit</button>
+
+
+
+
+  <h4>4</h4>
+        <div class="col-md-12" *ngFor="let control of dynamicformarray3">
+          <div [ngSwitch]="control.controltype">
+            <div *ngSwitchCase="'Select'">
+              <div class="col-md-4">
+                <label >{{control.questiondisplaytext}}</label>
+              </div>
+              <div class="col-md-6">
+                <!-- <label class="radio" *ngFor="let val of control.questionname.split(',')">{{val}}</label> -->
+                <select>
+                  <option value="-1">Selct one</option>
+                  <option *ngFor="let val of control.questionname.split(',')"
+                  class="form-control"  value="{{val}}">{{val}}</option>
+                </select>
+
+                <!-- <input  *ngFor="let val of control.questionname.split(',')" type="{{control.controltype}}"
+                class="form-control"  value="{{val}}"> -->
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>

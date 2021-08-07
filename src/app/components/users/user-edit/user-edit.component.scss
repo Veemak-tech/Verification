@@ -1,0 +1,70 @@
+.padAndMargin{
+ // padding: 0rem;
+ // margin: 0rem;
+  //border-radius: 20px;
+  border-color: #f8f8f9;
+  width: 18.5rem;
+}
+
+.padsize{
+  background-color: #f8f8f9;
+
+}
+
+////////////////////////////////////
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+////////////////////////////////////
+
+
+
+
+//////////////////////////////////@at-root
+#demo {
+  -webkit-transition: width 2s ease;
+  -moz-transition: width 2s ease;
+  -o-transition: width 2s ease;
+  transition: width 2s ease;
+
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  background: yellow;
+  vertical-align: middle;
+  line-height: 30px;
+  height: 30px;
+
+  width: 0px;
+}
+#demo.in {
+  width: 220px;
+}
+
+.padsize{
+  padding: 0.5rem;
+}
+
+.cardsizeAdjust{
+  text-decoration: none;
+  margin-bottom: 0;
+}
+
+.pass-label-mar{
+  margin-top: 8px;
+}
